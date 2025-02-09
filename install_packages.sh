@@ -18,5 +18,6 @@ cd yay
 makepkg -si
 cd $current_dir
 
+### Installing JetBrainsMono Nerf Font
 
-
+sudo pacman -S ttf-jetbrainsmono-nerd
