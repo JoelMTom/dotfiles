@@ -8,7 +8,7 @@ cd $home
 
 ### Installing git, base-devel
 
-sudo pacman -S git base-devel --needed
+sudo pacman -S git base-devel stow --needed
 
 ### Installing yay
 
@@ -17,5 +17,6 @@ git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd $current_dir
+
 
 
