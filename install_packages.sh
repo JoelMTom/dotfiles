@@ -8,7 +8,8 @@ cd $home
 
 ### Installing git, base-devel
 
-sudo pacman -S git base-devel stow --needed
+packages = "git base-devel stow picom feh acpi rofi"
+sudo pacman -S "$packages" --needed
 
 ### Installing yay
 
