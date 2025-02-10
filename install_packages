@@ -1,0 +1,52 @@
+#!/bin/bash
+
+### install packages using pacman
+
+install_packages_using_pacman() {
+  packages_names="$1"
+  flags="$2"
+  sudo pacman -S $flags $packages_names
+}
+
+### install packages using yay
+
+install_packages_using_yay() {
+  yay_installed="$(command -v yay | echo $?)"
+  if [[ $yay_installed -eq 1 ]]; then
+    install_yay 
+  fi
+  packages_names="$1"
+  flags="$2"
+  yay -S $flags $packages_names
+}
+
+### Installing git, base-devel
+
+# packages = "git base-devel stow picom feh acpi rofi"
+# sudo pacman -S "$packages" --needed
+
+### Installing yay
+
+install_required_packages_yay() {
+  requires_packages="git base-devel"
+  install_packages $requires_packages "--needed"
+}
+
+install_yay() {
+  echo "Installing yay"
+  install_required_packages_yay
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si
+  echo "test install"
+  cd $config_dir
+}
+
+### Installing JetBrainsMono Nerf Font
+
+# sudo pacman -S ttf-jetbrainsmono-nerd
+
+install_packages_test() {
+  echo "test"
+}
+

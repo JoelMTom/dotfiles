@@ -1,0 +1,27 @@
+#!/bin/bash
+
+install_required_packages() {
+  required_packages="picom feh acpi rofi"
+  install_packages_using_pacman "$required_packages" --needed
+}
+
+install_dwm() {
+  cd $stow_dir
+  if [[ ! -d "chadwm/" ]]; then
+    install_required_packages
+    git clone https://github.com/siduck/chadwm.git
+    xresources_path="$stow_dir/chadwm/.Xresources"
+    if [[ -f "$xresources_path" ]]; then
+      echo "copying .Xresources to $stow_dir"
+      mv $xresources_path "$stow_dir/.Xresources"
+    fi
+    if [[ -d "chadwm" ]]; then
+      echo "Installing chadwm"
+      cd "chadwm/chadwm"
+      sudo make install
+      cd ..
+    fi
+  fi
+  cd $config_dir
+}
+
