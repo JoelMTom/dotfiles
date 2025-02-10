@@ -10,7 +10,7 @@ initialize() {
   if [[ ! -d $stow_dir ]]; then
     echo "Creating stow directory in $HOME"
     mkdir $stow_dir
-    install_yay()
+    install_yay
   fi
 
 }
