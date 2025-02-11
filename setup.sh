@@ -28,4 +28,4 @@ initialize
 install_config_dwm "JoelMTom/chadwm.git"
 
 install_packages_using_pacman "stow"
-stow -d "$stow_dir" -t "$target_dir" --dotfiles -S dot-config
+stow -d "$HOME" -t "$target_dir" --dotfiles -S dotfiles
