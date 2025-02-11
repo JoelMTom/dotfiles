@@ -1,7 +1,7 @@
 #!/bin/bash
 
 install_required_packages() {
-  required_packages="picom feh acpi rofi ttf-jetbrainsmono-nerd"
+  required_packages="picom feh acpi rofi ttf-jetbrains-mono-nerd xorg-server xorg-apps"
   install_packages_using_pacman "$required_packages" --needed
 }
 
@@ -9,7 +9,7 @@ clone_dwm() {
   root_url="https://github.com/"
   child_url="$1"
   full_url="$root_url/$child_url"
-  cd $stow_dir
+  cd $dot_config_dir
   if [[ ! -d "chadwm/" ]]; then
     install_required_packages
     git clone $full_url
@@ -18,7 +18,7 @@ clone_dwm() {
 }
 
 install_dwm() {
-  source_dir="$stow_dir/chadwm/chadwm"
+  source_dir="$dot_config_dir/chadwm/chadwm"
   if [[ -d "$source_dir" ]]; then
     echo "Installing chadwm"
     cd "$source_dir"
@@ -31,22 +31,32 @@ install_dwm() {
 }
 
 post_install_dwm() {
-  xresources_path="$stow_dir/chadwm/.Xresources"
+  xresources_path="$dot_config_dir/chadwm/.Xresources"
   if [[ -f "$xresources_path" ]]; then
     echo "copying .Xresources to $stow_dir"
     cp "$xresources_path" "$stow_dir/.Xresources"
   fi
-  eww_path="$stow_dir/chadwm/"
+  eww_path="$dot_config_dir/chadwm/"
   if [[ -d "$eww_path/eww" ]]; then
     cd "$eww_path"
     echo "Moving eww to dotfiles"
-    mv eww "$stow_dir"
+    mv eww "$dot_config_dir"
   fi
-  scripts_dir="$stow_dir/chadwm/scripts"
+  scripts_dir="$dot_config_dir/chadwm/scripts"
   if [[ -d "$scripts_dir" ]]; then
     cd $scripts_dir
     chadwm_scripts="$(find . -name '*.sh')"
     chmod +x $chadwm_scripts
+  fi
+  rofi_dir="$dot_config_dir/chadwm/rofi/"
+  if [[ -d "$rofi_dir" ]]; then
+    echo "Moving rofi to dotfiles"
+    mv "$rofi_dir" "$dot_config_dir"
+  fi
+  xinitrc_path=$config_dir
+  if [[ -d "$xinitrc_path" ]]; then
+    echo "Copying Xinitrc to dotfiles"
+    cp "$xinitrc_path/.xinitrc" "$stow_dir"
   fi
   cd $config_dir
 }
