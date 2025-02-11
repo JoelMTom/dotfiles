@@ -11,10 +11,7 @@ install_packages_using_pacman() {
 ### install packages using yay
 
 install_packages_using_yay() {
-  yay_installed="$(command -v yay | echo $?)"
-  if [[ $yay_installed -eq 1 ]]; then
-    install_yay 
-  fi
+  install_yay 
   packages_names="$1"
   flags="$2"
   yay -S $flags $packages_names
@@ -33,13 +30,17 @@ install_required_packages_yay() {
 }
 
 install_yay() {
-  echo "Installing yay"
-  install_required_packages_yay
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
-  makepkg -si
-  echo "test install"
-  cd $config_dir
+  yay_installed="$(command -v yay | echo $?)"
+  if [[ $yay_installed -eq 1 ]]; then
+    echo "Installing yay"
+    cd $config_dir
+    install_required_packages_yay
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    echo "test install"
+    cd $config_dir
+  fi
 }
 
 ### Installing JetBrainsMono Nerf Font

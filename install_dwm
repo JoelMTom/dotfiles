@@ -1,27 +1,59 @@
 #!/bin/bash
 
 install_required_packages() {
-  required_packages="picom feh acpi rofi"
+  required_packages="picom feh acpi rofi ttf-jetbrainsmono-nerd"
   install_packages_using_pacman "$required_packages" --needed
 }
 
-install_dwm() {
+clone_dwm() {
+  root_url="https://github.com/"
+  child_url="$1"
+  full_url="$root_url/$child_url"
   cd $stow_dir
   if [[ ! -d "chadwm/" ]]; then
     install_required_packages
-    git clone https://github.com/siduck/chadwm.git
-    xresources_path="$stow_dir/chadwm/.Xresources"
-    if [[ -f "$xresources_path" ]]; then
-      echo "copying .Xresources to $stow_dir"
-      mv $xresources_path "$stow_dir/.Xresources"
-    fi
-    if [[ -d "chadwm" ]]; then
-      echo "Installing chadwm"
-      cd "chadwm/chadwm"
-      sudo make install
-      cd ..
-    fi
+    git clone $full_url
   fi
   cd $config_dir
 }
 
+install_dwm() {
+  source_dir="$stow_dir/chadwm/chadwm"
+  if [[ -d "$source_dir" ]]; then
+    echo "Installing chadwm"
+    cd "$source_dir"
+    # sudo make install
+  else
+    echo "dwm install failed"
+    exit -1
+  fi
+  cd $config_dir
+}
+
+post_install_dwm() {
+  xresources_path="$stow_dir/chadwm/.Xresources"
+  if [[ -f "$xresources_path" ]]; then
+    echo "copying .Xresources to $stow_dir"
+    cp "$xresources_path" "$stow_dir/.Xresources"
+  fi
+  eww_path="$stow_dir/chadwm/"
+  if [[ -d "$eww_path/eww" ]]; then
+    cd "$eww_path"
+    echo "Moving eww to dotfiles"
+    mv eww "$stow_dir"
+  fi
+  scripts_dir="$stow_dir/chadwm/scripts"
+  if [[ -d "$scripts_dir" ]]; then
+    cd $scripts_dir
+    chadwm_scripts="$(find . -name '*.sh')"
+    chmod +x $chadwm_scripts
+  fi
+  cd $config_dir
+}
+
+install_config_dwm() {
+  url="$1"
+  clone_dwm "$url"
+  install_dwm
+  post_install_dwm
+}
