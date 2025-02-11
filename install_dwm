@@ -9,9 +9,9 @@ clone_dwm() {
   root_url="https://github.com/"
   child_url="$1"
   full_url="$root_url/$child_url"
+  install_required_packages
   cd $dot_config_dir
   if [[ ! -d "chadwm/" ]]; then
-    install_required_packages
     git clone $full_url
   fi
   cd $config_dir
