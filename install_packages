@@ -17,13 +17,6 @@ install_packages_using_yay() {
   yay -S $flags $packages_names
 }
 
-### Installing git, base-devel
-
-# packages = "git base-devel stow picom feh acpi rofi"
-# sudo pacman -S "$packages" --needed
-
-### Installing yay
-
 install_required_packages_yay() {
   requires_packages="git base-devel"
   install_packages $requires_packages "--needed"
@@ -43,11 +36,11 @@ install_yay() {
   fi
 }
 
-### Installing JetBrainsMono Nerf Font
-
-# sudo pacman -S ttf-jetbrainsmono-nerd
-
-install_packages_test() {
-  echo "test"
+install_stow() {
+  install_packages_using_pacman "stow" "--needed"
 }
+
+# install_packages_test() {
+#   echo "test"
+# }
 

@@ -26,6 +26,6 @@ initialize() {
 
 initialize
 install_config_dwm "JoelMTom/chadwm.git"
+install_stow
 
-install_packages_using_pacman "stow" "--needed"
 stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
