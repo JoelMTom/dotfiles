@@ -15,7 +15,7 @@ initialize() {
   echo "Initializing"
   if [[ ! -d $stow_dir ]]; then
     echo "Creating stow directory in $HOME"
-    mkdir $stow_dir
+    mkdir -p $stow_dir
   fi
   if [[ ! -d "$dot_config_dir" ]]; then
     echo "Creating dot-config directory in $stow_dir"
