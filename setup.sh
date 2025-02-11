@@ -1,7 +1,7 @@
 #!/bin/bash
 
 config_dir=$(pwd)
-stow_dir="$HOME/dotfiles"
+stow_dir="$HOME/dotfiles/stow"
 dot_config_dir="$stow_dir/dot-config"
 target_dir="$HOME"
 echo "config_dir = $config_dir"
@@ -27,5 +27,5 @@ initialize() {
 initialize
 install_config_dwm "JoelMTom/chadwm.git"
 
-install_packages_using_pacman "stow"
-stow -d "$HOME" -t "$target_dir" --dotfiles -S dotfiles
+install_packages_using_pacman "stow" "--needed"
+stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
