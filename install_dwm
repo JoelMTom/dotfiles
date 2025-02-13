@@ -59,13 +59,13 @@ post_install_dwm() {
     cp "$xinitrc_path/.xinitrc" "$stow_dir"
   fi
   wallpaper_dir="$config_dir/wallpaper"
-  if [[ -d wallpaper_dir ]]; then
-    if [[ ! -d "$stow_dir/wallpaper" ]]; then
+  if [[ -d $wallpaper_dir ]]; then
+    if [[ ! -d "$stow_dir/wallpaper/" ]]; then
       echo "Making directory $stow_dir/wallpaper"
-      echo "Copying wallpaper to dotfiles"
       mkdir "$stow_dir/wallpaper"
     fi
-    cp "$wallpaper_dir/*" "$stow_dir/wallpaper/"
+    echo "Copying wallpaper to dotfiles"
+    cp -r "$wallpaper_dir/" "$stow_dir/wallpaper/"
   fi
   cd $config_dir
 }
