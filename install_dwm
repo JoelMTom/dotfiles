@@ -60,8 +60,9 @@ post_install_dwm() {
   fi
   wallpaper_dir="$config_dir/wallpaper"
   if [[ -d wallpaper_dir ]]; then
-    echo "Copying wallpaper to dotfiles"
     if [[ ! -d "$stow_dir/wallpaper" ]]; then
+      echo "Making directory $stow_dir/wallpaper"
+      echo "Copying wallpaper to dotfiles"
       mkdir "$stow_dir/wallpaper"
     fi
     cp "$wallpaper_dir/*" "$stow_dir/wallpaper/"
