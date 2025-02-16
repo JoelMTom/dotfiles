@@ -10,6 +10,8 @@ echo "dot_config_dir = $dot_config_dir"
 
 . "$config_dir/install_packages"
 . "$config_dir/install_dwm"
+. "$config_dir/config_nvim"
+. "$config_dir/config_ghostty"
 
 initialize() {
   echo "Initializing"
@@ -26,6 +28,19 @@ initialize() {
 
 initialize
 install_config_dwm "JoelMTom/chadwm.git"
-install_stow
+basic_packages="neovim ghostty exa bat"
+config_nvim
+config_ghostty
 
-stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
+# install_stow
+# stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
+
+
+# TEST
+
+# git_url="https://github.com/joelmtom/chadwm.git"
+# clone_dir="$HOME/dotfiles-test"
+# clone_using_git $git_url $clone_dir
+# movedir "$clone_dir/chadwm/eww" "$clone_dir"
+
+

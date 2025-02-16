@@ -1,0 +1,6 @@
+#!/bin/bash
+
+config_ghostty() {
+  copyfiles "$config_dir/ghostty" "$dot_config_dir"
+}
+

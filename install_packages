@@ -22,13 +22,16 @@ install_required_packages_yay() {
   install_packages $requires_packages "--needed"
 }
 
+# Install yay
+
 install_yay() {
   yay_installed="$(command -v yay | echo $?)"
   if [[ $yay_installed -eq 1 ]]; then
     echo "Installing yay"
-    cd $config_dir
     install_required_packages_yay
-    git clone https://aur.archlinux.org/yay.git
+    clone_using_git "https://aur.archlinux.org/yay.git" "$config_dir"
+    # cd $config_dir
+    # git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
     echo "test install"
@@ -36,9 +39,75 @@ install_yay() {
   fi
 }
 
+# Install stow
+
 install_stow() {
   install_packages_using_pacman "stow" "--needed"
 }
+
+# Function to make dir
+
+makedir() {
+  dir="$1"
+  if [[ ! -d "$dir" ]]; then
+    mkdir -p $dir
+  fi
+}
+
+# Function to clone a git url
+
+clone_using_git() {
+  git_url="$1"
+  clone_dir="$2"
+  repo_name="$3"
+  flags="$4"
+  makedir "$clone_dir"
+  cd "$clone_dir"
+  arguments="$git_url"
+  if [[ ! -z "$flags" ]]; then
+    arguments="$flags $arguments"
+  fi
+  if [[ ! -z "$repo_name" ]]; then
+    arguments="$arguments $repo_name"
+  fi
+  git clone $arguments
+}
+
+# Function to move dir
+
+movedir() {
+  from_dir="$1"
+  to_dir="$2"
+  makedir "$from_dir"
+  makedir "$to_dir"
+  echo "Moving $from_dir to $to_dir"
+  mv "$from_dir" "$to_dir"
+}
+
+# Function to copy file
+
+copyfile() {
+  file_to_move="$1"
+  to_dir="$2"
+  makedir "$to_dir"
+  if [[ -f "$file_to_move" ]]; then
+    echo "Moving $file_to_move file to $to_dir"
+    cp "$file_to_move" "$to_dir"
+  fi
+}
+
+#Function to copy files
+
+copyfiles() {
+  files_dir="$1"
+  to_dir="$2"
+  makedir "$to_dir"
+  if [[ -d "$files_dir" ]]; then
+    echo "Moving $files_dir file to $to_dir"
+    cp -r "$files_dir" "$to_dir"
+  fi
+}
+
 
 # install_packages_test() {
 #   echo "test"

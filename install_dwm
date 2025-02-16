@@ -2,7 +2,7 @@
 
 install_required_packages() {
   required_packages="picom feh acpi rofi ttf-jetbrains-mono-nerd xorg-server xorg-apps xorg-xinit"
-  install_packages_using_pacman "$required_packages" --needed
+  install_packages_using_pacman "$required_packages" "--needed"
 }
 
 clone_dwm() {
@@ -10,10 +10,7 @@ clone_dwm() {
   child_url="$1"
   full_url="$root_url/$child_url"
   install_required_packages
-  cd $dot_config_dir
-  if [[ ! -d "chadwm/" ]]; then
-    git clone $full_url
-  fi
+  clone_using_git "$full_url" "$dot_config_dir"
   cd $config_dir
 }
 
@@ -31,42 +28,31 @@ install_dwm() {
 }
 
 post_install_dwm() {
-  xresources_path="$dot_config_dir/chadwm/.Xresources"
-  if [[ -f "$xresources_path" ]]; then
-    echo "copying .Xresources to $stow_dir"
-    cp "$xresources_path" "$stow_dir/.Xresources"
-  fi
-  eww_path="$dot_config_dir/chadwm/"
-  if [[ -d "$eww_path/eww" ]]; then
-    cd "$eww_path"
-    echo "Moving eww to dotfiles"
-    mv eww "$dot_config_dir"
-  fi
+  xresources_dir="$dot_config_dir/chadwm/.Xresources"
+  copyfile "$xresources_dir" "$stow_dir/.Xresources"
+
+  xinitrc_file="$config_dir/.xinitrc"
+  copyfile "$xinitrc_file" "$stow_dir"
+
+  eww_dir="$dot_config_dir/chadwm/eww"
+  movedir "$eww_dir" "$dot_config_dir"
+
+  rofi_dir="$dot_config_dir/chadwm/rofi/"
+  movedir "$rofi_dir" "$dot_config_dir"
+
   scripts_dir="$dot_config_dir/chadwm/scripts"
   if [[ -d "$scripts_dir" ]]; then
     cd $scripts_dir
     chadwm_scripts="$(find . -name '*.sh')"
     chmod +x $chadwm_scripts
   fi
-  rofi_dir="$dot_config_dir/chadwm/rofi/"
-  if [[ -d "$rofi_dir" ]]; then
-    echo "Moving rofi to dotfiles"
-    mv "$rofi_dir" "$dot_config_dir"
-  fi
-  xinitrc_path=$config_dir
-  if [[ -d "$xinitrc_path" ]]; then
-    echo "Copying Xinitrc to dotfiles"
-    cp "$xinitrc_path/.xinitrc" "$stow_dir"
-  fi
+
   wallpaper_dir="$config_dir/wallpapers"
   if [[ -d $wallpaper_dir ]]; then
-    if [[ ! -d "$stow_dir/wallpapers/" ]]; then
-      echo "Making directory $stow_dir/wallpapers"
-      mkdir "$stow_dir/wallpapers"
-    fi
-    echo "Copying wallpaper to dotfiles"
-    cp -r "$wallpaper_dir/" "$stow_dir/"
+    makedir "$stow_dir/wallpapers"
+    copyfiles "$wallpaper_dir" "$stow_dir"
   fi
+
   cd $config_dir
 }
 
