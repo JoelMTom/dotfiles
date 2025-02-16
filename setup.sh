@@ -33,7 +33,7 @@ config_nvim
 config_ghostty
 
 # install_stow
-# stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
+stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
 
 
 # TEST

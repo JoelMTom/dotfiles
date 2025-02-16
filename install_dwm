@@ -19,7 +19,7 @@ install_dwm() {
   if [[ -d "$source_dir" ]]; then
     echo "Installing chadwm"
     cd "$source_dir"
-    # sudo make install
+    sudo make install
   else
     echo "dwm install failed"
     exit -1
