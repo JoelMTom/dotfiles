@@ -31,6 +31,7 @@ install_config_dwm "JoelMTom/chadwm.git"
 basic_packages="neovim ghostty exa bat firefox"
 config_nvim
 config_ghostty
+rm "~/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
 
 install_stow
