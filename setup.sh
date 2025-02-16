@@ -32,7 +32,7 @@ basic_packages="neovim ghostty exa bat firefox"
 install_packages_using_pacman $basic_packages
 config_nvim
 config_ghostty
-rm "~/.bashrc"
+rm "$HOME/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
 
 install_stow
