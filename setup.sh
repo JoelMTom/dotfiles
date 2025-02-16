@@ -29,7 +29,7 @@ initialize() {
 initialize
 install_config_dwm "JoelMTom/chadwm.git"
 basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf"
-install_packages_using_pacman $basic_packages
+install_packages_using_pacman "$basic_packages" "--needed"
 config_nvim
 config_ghostty
 rm "$HOME/.bashrc"
