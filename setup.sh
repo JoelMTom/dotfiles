@@ -28,7 +28,7 @@ initialize() {
 
 initialize
 install_config_dwm "JoelMTom/chadwm.git"
-basic_packages="neovim ghostty exa bat"
+basic_packages="neovim ghostty exa bat firefox"
 config_nvim
 config_ghostty
 
