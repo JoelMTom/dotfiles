@@ -1,26 +1,29 @@
-#!/bin/bash
+
 
 config_dir=$(pwd)
 stow_dir="$HOME/dotfiles/stow"
 dot_config_dir="$stow_dir/dot-config"
 target_dir="$HOME"
+include_dir="$config_dir/includes"
 echo "config_dir = $config_dir"
 echo "stow_dir = $stow_dir"
 echo "dot_config_dir = $dot_config_dir"
 
-. "$config_dir/install_packages"
-. "$config_dir/install_dwm"
-. "$config_dir/config_nvim"
-. "$config_dir/config_ghostty"
+source "$include_dir/log.sh"
+source "$config_dir/install_packages"
+source "$config_dir/install_dwm"
+source "$config_dir/config_nvim"
+source "$config_dir/config_ghostty"
+source "$config_dir/config_plymouth"
 
 initialize() {
-  echo "Initializing"
+  _writeLog 0 "Initializing"
   if [[ ! -d $stow_dir ]]; then
-    echo "Creating stow directory in $HOME"
+    _writeLog 0 "Creating stow directory in $HOME"
     mkdir -p $stow_dir
   fi
   if [[ ! -d "$dot_config_dir" ]]; then
-    echo "Creating dot-config directory in $stow_dir"
+    _writeLog 0 "Creating dot-config directory in $stow_dir"
     mkdir "$dot_config_dir"
   fi
   install_yay
@@ -28,12 +31,13 @@ initialize() {
 
 initialize
 install_config_dwm "JoelMTom/chadwm.git"
-basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf"
-install_packages_using_pacman "$basic_packages" "--needed"
+basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf zen-browser-bin plymouth"
+install_packages_using_yay "$basic_packages" "--needed"
 config_nvim
 config_ghostty
 rm "$HOME/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
+
 
 install_stow
 stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow

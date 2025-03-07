@@ -27,15 +27,13 @@ install_required_packages_yay() {
 install_yay() {
   yay_installed="$(command -v yay | echo $?)"
   if [[ $yay_installed -eq 1 ]]; then
-    echo "Installing yay"
+    _writeLog 0 "Installing yay"
     install_required_packages_yay
     clone_using_git "https://aur.archlinux.org/yay.git" "$config_dir"
-    # cd $config_dir
-    # git clone https://aur.archlinux.org/yay.git
     cd yay
     makepkg -si
-    echo "test install"
     cd $config_dir
+    _writeLog 0 "Installed yay"
   fi
 }
 
@@ -80,7 +78,7 @@ movedir() {
   to_dir="$2"
   makedir "$from_dir"
   makedir "$to_dir"
-  echo "Moving $from_dir to $to_dir"
+  _writeLog 0 "Moving $from_dir to $to_dir"
   mv "$from_dir" "$to_dir"
 }
 
@@ -91,7 +89,7 @@ copyfile() {
   to_dir="$2"
   makedir "$to_dir"
   if [[ -f "$file_to_move" ]]; then
-    echo "Moving $file_to_move file to $to_dir"
+    _writeLog 0 "Moving $file_to_move file to $to_dir"
     cp "$file_to_move" "$to_dir"
   fi
 }
@@ -103,13 +101,7 @@ copyfiles() {
   to_dir="$2"
   makedir "$to_dir"
   if [[ -d "$files_dir" ]]; then
-    echo "Moving $files_dir file to $to_dir"
+    _writeLog 0 "Moving $files_dir file to $to_dir"
     cp -r "$files_dir" "$to_dir"
   fi
 }
-
-
-# install_packages_test() {
-#   echo "test"
-# }
-

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+install_config_plymouth() {
+  install_packages_using_pacman "plymouth" "--needed"
+  sudo sed -i -e "s/\(HOOKS.*systemd.*\) \(\(encrypt\|sd-encrypt\)\?\)/\1 plymouth \2/g" /etc/mkinitcpio.conf
+  sudo mkinitcpio -P
+}
+

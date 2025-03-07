@@ -17,11 +17,11 @@ clone_dwm() {
 install_dwm() {
   source_dir="$dot_config_dir/chadwm/chadwm"
   if [[ -d "$source_dir" ]]; then
-    echo "Installing chadwm"
+    _writeLog 0 "Installing chadwm"
     cd "$source_dir"
     sudo make install
   else
-    echo "dwm install failed"
+    _wirteLog 2 "dwm install failed"
     exit -1
   fi
   cd $config_dir
