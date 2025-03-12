@@ -26,6 +26,7 @@ initialize() {
     _writeLog 0 "Creating dot-config directory in $stow_dir"
     mkdir "$dot_config_dir"
   fi
+  install_packages_using_pacman "command" "--needed"
   install_yay
 }
 
