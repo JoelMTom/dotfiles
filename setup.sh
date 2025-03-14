@@ -1,5 +1,3 @@
-
-
 config_dir=$(pwd)
 stow_dir="$HOME/dotfiles/stow"
 dot_config_dir="$stow_dir/dot-config"
@@ -37,7 +35,6 @@ config_nvim
 config_ghostty
 rm "$HOME/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
-
 
 install_stow
 stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow

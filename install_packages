@@ -18,7 +18,7 @@ install_packages_using_yay() {
 }
 
 install_required_packages_yay() {
-  requires_packages="git base-devel"
+  requires_packages="git base-devel coreutils"
   install_packages $requires_packages "--needed"
 }
 
