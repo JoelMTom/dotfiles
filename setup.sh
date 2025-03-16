@@ -35,6 +35,7 @@ config_nvim
 config_ghostty
 rm "$HOME/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
+install_config_plymouth
 
 install_stow
 stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
