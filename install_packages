@@ -26,7 +26,7 @@ install_required_packages_yay() {
 
 install_yay() {
   install_required_packages_yay
-  command -v yay 
+  command -v yay > /dev/null
   yay_installed="$(echo $?)"
   if [[ $yay_installed -eq 1 ]]; then
     _writeLog 0 "Installing yay"
