@@ -19,7 +19,7 @@ install_packages_using_yay() {
 
 install_required_packages_yay() {
   requires_packages="git base-devel coreutils"
-  install_packages_using_pacman $requires_packages "--needed"
+  install_packages_using_pacman "$requires_packages" "--needed"
 }
 
 # Install yay
