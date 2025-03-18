@@ -13,6 +13,7 @@ source "$config_dir/install_dwm"
 source "$config_dir/config_nvim"
 source "$config_dir/config_ghostty"
 source "$config_dir/config_plymouth"
+source "$config_dir/config_tmux"
 
 initialize() {
   _writeLog 0 "Initializing"
@@ -29,13 +30,14 @@ initialize() {
 
 initialize
 install_config_dwm "JoelMTom/chadwm.git"
-basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf zen-browser-bin plymouth cmake"
+basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf zen-browser-bin plymouth cmake yazi"
 install_packages_using_yay "$basic_packages" "--needed"
 config_nvim
 config_ghostty
 rm "$HOME/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
 install_config_plymouth
+install_config_tmux
 
 install_stow
 stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
