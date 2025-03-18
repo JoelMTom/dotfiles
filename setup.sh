@@ -14,6 +14,7 @@ source "$config_dir/config_nvim"
 source "$config_dir/config_ghostty"
 source "$config_dir/config_plymouth"
 source "$config_dir/config_tmux"
+source "$config_dir/config_yazi"
 
 initialize() {
   _writeLog 0 "Initializing"
@@ -38,6 +39,7 @@ rm "$HOME/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
 install_config_plymouth
 install_config_tmux
+install_config_yazi
 
 install_stow
 stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
