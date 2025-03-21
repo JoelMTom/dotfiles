@@ -28,7 +28,7 @@ install_dwm() {
 }
 
 post_install_dwm() {
-  xresources_dir="$dot_config_dir/chadwm/.Xresources"
+  xresources_dir="$dot_config_dir/chadwm/"
   copyfile "$xresources_dir" "$stow_dir/.Xresources"
 
   xinitrc_file="$config_dir/.xinitrc"
