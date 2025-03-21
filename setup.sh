@@ -18,6 +18,7 @@ source "$config_dir/config_yazi"
 
 initialize() {
   _writeLog 0 "Initializing"
+  sudo pacman -Syu
   if [[ ! -d $stow_dir ]]; then
     _writeLog 0 "Creating stow directory in $HOME"
     mkdir -p $stow_dir
