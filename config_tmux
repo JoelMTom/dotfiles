@@ -7,5 +7,3 @@ install_config_tmux() {
   tmux_config_file="$config_dir/tmux.conf"
   copyfile "$tmux_config_file" "$dot_config_dir/tmux"
 }
-
-
