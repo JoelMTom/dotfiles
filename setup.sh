@@ -48,13 +48,3 @@ install_config_yazi
 
 install_stow
 stow -d "$HOME/dotfiles" -t "$target_dir" --dotfiles -S stow
-
-
-# TEST
-
-# git_url="https://github.com/joelmtom/chadwm.git"
-# clone_dir="$HOME/dotfiles-test"
-# clone_using_git $git_url $clone_dir
-# movedir "$clone_dir/chadwm/eww" "$clone_dir"
-
-
