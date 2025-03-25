@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+config_backlight() {
+  sudo usermod -aG video "$(whoami)"
+}
