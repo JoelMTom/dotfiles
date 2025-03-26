@@ -12,7 +12,6 @@ source "$config_dir/install_packages"
 source "$config_dir/install_dwm"
 source "$config_dir/config_nvim"
 source "$config_dir/config_ghostty"
-source "$config_dir/config_plymouth"
 source "$config_dir/config_tmux"
 source "$config_dir/config_yazi"
 source "$config_dir/config_backlight"
@@ -35,14 +34,13 @@ initialize
 required_fonts="ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji"
 install_packages_using_yay "$required_fonts" "--needed"
 install_config_dwm "JoelMTom/chadwm.git"
-basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf zen-browser-bin cmake yazi light clang llvm nodejs npm unzip"
+basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf plymouth zen-browser-bin cmake yazi light clang llvm nodejs npm unzip"
 install_packages_using_yay "$basic_packages" "--needed"
 config_nvim
 config_ghostty
 config_backlight
 rm "$HOME/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
-install_config_plymouth
 install_config_tmux
 install_config_yazi
 
