@@ -1,29 +1,27 @@
 #!/bin/bash
 
-### install packages using pacman
-
+# install packages using pacman
 install_packages_using_pacman() {
   packages_names="$1"
   flags="$2"
-  sudo pacman -S $flags $packages_names
+  sudo pacman -Syu $flags $packages_names
 }
 
-### install packages using yay
-
+# install packages using yay
 install_packages_using_yay() {
   install_yay 
   packages_names="$1"
   flags="$2"
-  yay -S $flags $packages_names
+  yay -Syu $flags $packages_names
 }
 
+# install packages required for yay
 install_required_packages_yay() {
   requires_packages="git base-devel coreutils"
   install_packages_using_pacman "$requires_packages" "--needed"
 }
 
 # Install yay
-
 install_yay() {
   install_required_packages_yay
   command -v yay > /dev/null
@@ -39,13 +37,11 @@ install_yay() {
 }
 
 # Install stow
-
 install_stow() {
   install_packages_using_pacman "stow" "--needed"
 }
 
 # Function to make dir
-
 makedir() {
   dir="$1"
   if [[ ! -d "$dir" ]]; then
@@ -54,7 +50,6 @@ makedir() {
 }
 
 # Function to clone a git url
-
 clone_using_git() {
   git_url="$1"
   clone_dir="$2"
@@ -73,7 +68,6 @@ clone_using_git() {
 }
 
 # Function to move dir
-
 movedir() {
   from_dir="$1"
   to_dir="$2"
@@ -84,7 +78,6 @@ movedir() {
 }
 
 # Function to copy file
-
 copyfile() {
   file_to_move="$1"
   to_dir="$2"
@@ -96,7 +89,6 @@ copyfile() {
 }
 
 #Function to copy files
-
 copyfiles() {
   files_dir="$1"
   to_dir="$2"
