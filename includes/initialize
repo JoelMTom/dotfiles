@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+
+initialize() {
+  _writeLog 0 "Initializing"
+  _writrLog 0 "Updating packages"
+  sudo pacman -Syu
+  if [[ ! -d $stow_dir ]]; then
+    _writeLog 0 "Creating stow directory in $HOME"
+    mkdir -p $stow_dir
+  fi
+  if [[ ! -d "$dot_config_dir" ]]; then
+    _writeLog 0 "Creating dot-config directory in $stow_dir"
+    mkdir "$dot_config_dir"
+  fi
+  install_yay
+}
