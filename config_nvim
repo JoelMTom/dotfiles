@@ -1,6 +1,0 @@
-#!/bin/bash
-
-config_nvim() {
-  nvim_git_url="https://github.com/joelmtom/nvim-dotfiles.git"
-  clone_using_git "$nvim_git_url" "$dot_config_dir" "nvim" 
-}
