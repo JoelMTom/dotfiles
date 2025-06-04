@@ -1,4 +1,7 @@
 yay/
 dotfiles/
-chadwm/config.h
+dot-config
+.Xresources
+.tmux
 log
+
