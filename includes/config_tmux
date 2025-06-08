@@ -4,6 +4,6 @@ install_config_tmux() {
   install_packages_using_pacman "tmux" "--needed"
   # git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   clone_using_git "https://github.com/tmux-plugins/tpm" "$stow_dir/.tmux/plugins/" "tpm"
-  tmux_config_file="$config_dir/tmux.conf"
-  copyfile "$tmux_config_file" "$dot_config_dir/tmux"
+  # tmux_config_file="$config_dir/tmux.conf"
+  # copyfile "$tmux_config_file" "$dot_config_dir/tmux"
 }
