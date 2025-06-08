@@ -2,7 +2,7 @@
 
 install_config_yazi() {
   install_packages_using_pacman "yazi" "--needed"
-  yazi_config_file="$config_dir/theme.toml"
-  copyfile "$yazi_config_file" "$dot_config_dir/yazi"
+  # yazi_config_file="$config_dir/theme.toml"
+  # copyfile "$yazi_config_file" "$dot_config_dir/yazi"
 }
 
