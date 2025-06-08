@@ -23,6 +23,9 @@ if command -v zoxide > /dev/null; then
   alias zz='z -'
 fi
 
+export EDITOR=nvim
+export MANPAGER='nvim +Man!'
+
 eval "$(zoxide init bash)"
 eval "$(thefuck --alias)"
 eval "$(thefuck --alias fk)"
