@@ -48,5 +48,4 @@ if [ -d $xinitdir/xinitrc.d ] ; then
  unset f
 fi
 
-
 exec $dwm
