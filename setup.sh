@@ -16,24 +16,22 @@ source "$include_dir/initialize"
 source "$include_dir/install_packages"
 source "$include_dir/install_dwm"
 source "$include_dir/config_nvim"
-source "$include_dir/config_ghostty"
 source "$include_dir/config_tmux"
 source "$include_dir/config_yazi"
 source "$include_dir/config_backlight"
 
 initialize
-# required_fonts="ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji"
-# install_packages_using_yay "$required_fonts" "--needed"
-# install_config_dwm "JoelMTom/chadwm.git"
-# basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf plymouth zen-browser-bin cmake yazi light clang llvm nodejs npm unzip"
-# install_packages_using_yay "$basic_packages" "--needed"
-# config_nvim
-# config_ghostty
-# config_backlight
-# rm "$HOME/.bashrc"
-# copyfile "$config_dir/.bashrc" "$stow_dir"
-# install_config_tmux
-# install_config_yazi
-#
-# install_stow
+required_fonts="ttf-jetbrains-mono noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji"
+install_packages_using_yay "$required_fonts" "--needed"
+install_config_dwm "JoelMTom/chadwm.git"
+basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf plymouth zen-browser-bin cmake yazi light clang llvm nodejs npm unzip"
+install_packages_using_yay "$basic_packages" "--needed"
+config_nvim
+config_backlight
+rm "$HOME/.bashrc"
+copyfile "$config_dir/.bashrc" "$stow_dir"
+install_config_tmux
+install_config_yazi
+
+install_stow
 stow -d ${stow_dir} -t ${target_dir} --dotfiles --ignore='\.*.sh|includes|.git\.*|log' -R .

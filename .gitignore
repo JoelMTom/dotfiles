@@ -1,6 +1,9 @@
 yay/
 dotfiles/
-dot-config
+dot-config/nvim
+dot-config/chadwm
+dot-config/eww
+dot-config/rofi
 .Xresources
 .tmux
 log

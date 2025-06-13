@@ -4,7 +4,7 @@
 install_packages_using_pacman() {
     packages_names="$1"
     flags="$2"
-    sudo pacman -S $flags $packages_names 2>>log
+    sudo pacman -S $flags $packages_names
 }
 
 # install packages using yay
@@ -12,7 +12,7 @@ install_packages_using_yay() {
     install_yay 
     packages_names="$1"
     flags="$2"
-    yay -S $flags $packages_names 2>>log
+    yay -S $flags $packages_names
 }
 
 # install packages required for yay
