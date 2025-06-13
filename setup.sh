@@ -27,7 +27,6 @@ install_config_dwm "JoelMTom/chadwm.git"
 basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf plymouth zen-browser-bin cmake yazi light clang llvm nodejs npm unzip"
 install_packages_using_yay "$basic_packages" "--needed"
 config_nvim
-config_ghostty
 config_backlight
 rm "$HOME/.bashrc"
 copyfile "$config_dir/.bashrc" "$stow_dir"
