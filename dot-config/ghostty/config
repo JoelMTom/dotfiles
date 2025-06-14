@@ -1,10 +1,20 @@
 # This is the configuration file for Ghostty.
 #
 
-font-family = "JetBrains Mono Medium"
-font-family-bold = "JetBrains Mono Bold"
-font-family-italic = "JetBrains Mono Italic"
-font-family-bold-italic = "JetBrains Mono Bold Italic"
+font-family = "JetBrains Mono"
+font-family-bold = "JetBrains Mono"
+font-family-italic = "JetBrains Mono"
+font-family-bold-italic = "JetBrains Mono Bold"
+font-style = default
+font-style-bold = default
+font-style-italic = default
+font-style-bold-italic = default
+font-synthetic-style = bold,italic,bold-italic
+
+alpha-blending = native
+# macos-window-shadow = false
+grapheme-width-method = unicode
+freetype-load-flags = hinting,force-autohint,monochrome,autohint
 
 title = "Ghostty"
 gtk-titlebar = false
@@ -12,15 +22,13 @@ theme = tokyonight_night
 cursor-style = bar
 window-decoration = server
 window-theme = ghostty
-gtk-adwaita = true
+window-subtitle = working-directory
 
 confirm-close-surface = false
+link-url = true
 
 window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
 window-padding-color = background
 
-alpha-blending = linear
-macos-window-shadow = false
-grapheme-width-method = unicode
