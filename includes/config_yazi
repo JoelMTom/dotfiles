@@ -1,6 +1,0 @@
-#!/bin/bash
-
-install_config_yazi() {
-  install_packages_using_pacman "yazi" "--needed"
-}
-

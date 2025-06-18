@@ -25,6 +25,7 @@ fi
 
 export EDITOR=nvim
 export MANPAGER='nvim +Man!'
+export MANWIDTH='999'
 
 eval "$(zoxide init bash)"
 eval "$(thefuck --alias)"

@@ -18,7 +18,7 @@ freetype-load-flags = hinting,force-autohint,monochrome,autohint
 
 title = "Ghostty"
 gtk-titlebar = false
-theme = tokyonight_night
+theme = rose-pine
 cursor-style = bar
 window-decoration = server
 window-theme = ghostty

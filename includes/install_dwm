@@ -7,11 +7,12 @@ install_required_packages() {
 
 clone_dwm() {
   root_url="https://github.com/"
-  child_url="$1"
-  full_url="$root_url/$child_url"
+  child_url=${1}
+  repo_name=${2}
+  full_url=${root_url}${child_url}
   install_required_packages
-  clone_using_git "$full_url" "$dot_config_dir"
-  cd $config_dir
+  clone_using_git ${full_url} ${dot_config_dir} ${repo_name}
+  cd "${config_dir}"
 }
 
 install_dwm() {
@@ -28,17 +29,17 @@ install_dwm() {
 }
 
 post_install_dwm() {
-  xresources_dir="$dot_config_dir/chadwm/"
-  copyfile "$xresources_dir/.Xresources" "$stow_dir"
+  # xresources_dir="$dot_config_dir/chadwm/"
+  # copyfile "$xresources_dir/.Xresources" "$stow_dir"
 
-  xinitrc_file="$config_dir/.xinitrc"
-  copyfile "$xinitrc_file" "$stow_dir"
+  # xinitrc_file="$config_dir/.xinitrc"
+  # copyfile "$xinitrc_file" "$stow_dir"
 
-  eww_dir="$dot_config_dir/chadwm/eww"
-  movedir "$eww_dir" "$dot_config_dir"
+  # eww_dir="$dot_config_dir/chadwm/eww"
+  # movedir "$eww_dir" "$dot_config_dir"
 
-  rofi_dir="$dot_config_dir/chadwm/rofi/"
-  movedir "$rofi_dir" "$dot_config_dir"
+  # rofi_dir="$dot_config_dir/chadwm/rofi/"
+  # movedir "$rofi_dir" "$dot_config_dir"
 
   scripts_dir="$dot_config_dir/chadwm/scripts"
   if [[ -d "$scripts_dir" ]]; then
@@ -47,18 +48,17 @@ post_install_dwm() {
     chmod +x $chadwm_scripts
   fi
 
-  wallpaper_dir="$config_dir/wallpapers"
-  if [[ -d $wallpaper_dir ]]; then
-    makedir "$stow_dir/wallpapers"
-    copyfiles "$wallpaper_dir" "$stow_dir"
-  fi
-
-  cd $config_dir
+  # wallpaper_dir="$config_dir/wallpapers"
+  # if [[ -d $wallpaper_dir ]]; then
+  #   makedir "$stow_dir/wallpapers"
+  #   copyfiles "$wallpaper_dir" "$stow_dir"
+  # fi
 }
 
 install_config_dwm() {
-  url="$1"
-  clone_dwm "$url"
+  url=${1}
+  repo_name=${2}
+  clone_dwm ${url} ${repo_name}
   install_dwm
   post_install_dwm
 }

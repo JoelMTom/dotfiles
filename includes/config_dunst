@@ -1,0 +1,10 @@
+#!usr/bin/env bash
+
+config_dunst() {
+  dunst_git_url="https://github.com/d2718nis/rose-pine-dunst.git"
+  dunst_config_dir="${dot_config_dir}/dunst"
+  clone_using_git ${dunst_git_url} "${dunst_config_dir}/dunstrc.d" "themes"
+  dunst_themes_dir="${dunst_config_dir}/dunstrc.d/themes"
+  copyfile "${dunst_themes_dir}/rose-pine.conf" "${dunst_config_dir}"
+  mv "${dunst_config_dir}/rose-pine.conf" "${dunst_config_dir}/dunstrc"
+}

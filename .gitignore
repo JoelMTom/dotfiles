@@ -2,9 +2,6 @@ yay/
 dotfiles/
 dot-config/nvim
 dot-config/chadwm
-dot-config/eww
-dot-config/rofi
-.Xresources
-.tmux
+dot-config/tmux/plugins
+dot-config/dunst
 log
-
