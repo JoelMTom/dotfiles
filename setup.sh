@@ -13,8 +13,6 @@ _writeLog 0 "dot_config_dir = ${dot_config_dir}"
 _writeLog 0 "target_dir = ${target_dir}"
 echo
 
-# clone_using_git "https://github.com/joelmtom/dotfiles" "/home/joel/git-files/" "dotfiles" "--bare"
-
 source "${include_dir}/initialize"
 source "${include_dir}/install_packages"
 source "${include_dir}/install_dwm"
