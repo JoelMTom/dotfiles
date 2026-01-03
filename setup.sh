@@ -24,10 +24,10 @@ source "${include_dir}/config_backlight"
 source "${include_dir}/config_dunst"
 
 initialize
-required_fonts="ttf-jetbrains-mono noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji"
+required_fonts="ttf-jetbrains-mono noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji ttf-jetbrains-mono-nerd"
 install_packages_using_yay "${required_fonts}" "--needed"
 install_config_dwm "JoelMTom/chadwm.git" "chadwm"
-basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf plymouth zen-browser-bin cmake yazi light clang llvm nodejs npm unzip dunst batify tmux"
+basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf plymouth zen-browser-bin cmake yazi light clang llvm nodejs npm unzip dunst batify tmux man"
 install_packages_using_yay "${basic_packages}" "--needed"
 config_nvim
 config_backlight
