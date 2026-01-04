@@ -14,7 +14,7 @@ font-synthetic-style = bold,italic,bold-italic
 alpha-blending = native
 # macos-window-shadow = false
 grapheme-width-method = unicode
-freetype-load-flags = hinting,force-autohint,monochrome,autohint
+# freetype-load-flags = hinting,force-autohint,monochrome,autohint
 
 title = "Ghostty"
 gtk-titlebar = false

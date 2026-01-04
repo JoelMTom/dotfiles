@@ -25,7 +25,7 @@ initialize
 required_fonts="ttf-jetbrains-mono noto-fonts noto-fonts-cjk noto-fonts-extra noto-fonts-emoji ttf-jetbrains-mono-nerd"
 install_packages_using_yay "${required_fonts}" "--needed"
 install_config_dwm "JoelMTom/chadwm.git" "chadwm"
-basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf plymouth zen-browser-bin cmake yazi light clang llvm nodejs npm unzip dunst batify tmux man"
+basic_packages="neovim ghostty exa bat firefox zoxide thefuck fzf plymouth zen-browser-bin cmake yazi light clang llvm nodejs npm unzip dunst batify tmux man bluetui bluez bluez-utils"
 install_packages_using_yay "${basic_packages}" "--needed"
 config_nvim
 config_backlight
