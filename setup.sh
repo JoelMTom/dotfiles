@@ -2,8 +2,7 @@ config_dir=${1:-$(pwd)}
 stow_dir="${config_dir}"
 dot_config_dir="${stow_dir}/dot-config"
 target_dir=${2:-$HOME}
-# include_dir="${config_dir}/includes"
-include_dir="$HOME/includes"
+include_dir="${config_dir}/includes"
 
 source "${include_dir}/log.sh"
 source "${include_dir}/utils.sh"
